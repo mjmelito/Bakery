@@ -9,7 +9,7 @@
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
 
-@if (@Model.Items.Count == 0)
+@if (@Model.Engineers.Count == 0)
 {
   <h3>No engineers have been added to this machine yet!</h3>
 } 
@@ -19,7 +19,7 @@ else
   <ul>
     @foreach (Engineer engineer in Model.Engineers)
     {
-      <li>@Html.ActionLink($"{engineer.name}", "Details", "Engineers", new { id = engineer.EngineerId })</li>
+      <li>@Html.ActionLink($"{engineer.Name}", "Details", "Engineers", new { id = engineer.EngineerId })</li>
     }
   </ul>
 }
