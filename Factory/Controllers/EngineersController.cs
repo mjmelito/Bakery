@@ -44,10 +44,12 @@ namespace Factory.Controllers
 
     public ActionResult Details(int id)
     {
-      Engineer thisengineer = _db.Engineers
-                          .Include(engineer => engineer.Machine)
-                          .FirstOrDefault(engineer => engineer.EngineerId == id);
-      return View(thisengineer);
+      Engineer thisEngineer = _db.Engineers
+          .Include(engineer => engineer.Machine)
+          .Include(engineer => engineer.JoinEntities)
+          .ThenInclude(join => join.Tag)
+          .FirstOrDefault(engineer => engineer.EngineerId == id);
+      return View(thisEngineer);
     }
 
     public ActionResult Edit(int id)
@@ -76,6 +78,34 @@ namespace Factory.Controllers
     {
       Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       _db.Engineers.Remove(thisEngineer);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult AddTag(int id)
+    {
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
+      ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Title");
+      return View(thisEngineer);
+    }
+
+    [HttpPost]
+    public ActionResult AddTag(Engineer engineer, int tagId)
+    {
+      #nullable enable
+      EngineerTag? joinEntity = _db.EngineerTags.FirstOrDefault(join => (join.TagId == tagId && join.EngineerId == engineer.EngineerId));
+      #nullable disable
+      if (joinEntity == null && tagId != 0)
+      {
+        _db.EngineerTags.Add(new EngineerTag() { TagId = tagId, EngineerId = engineer.EngineerId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = engineer.EngineerId });
+    }  
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      EngineerTag joinEntry = _db.EngineerTags.FirstOrDefault(entry => entry.EngineerTagId == joinId);
+      _db.EngineerTags.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

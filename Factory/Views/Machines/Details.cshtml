@@ -2,28 +2,44 @@
   Layout = "_Layout";
 }
 
-@model Factory.Models.Machine
-@using Factory.Models
+@model Factory.Models.Machine;
+@using Factory.Models;
+@using System.Collections.Generic;
 
 <h2>Machine Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 
-@if (@Model.Engineers.Count == 0)
+@if(@Model.Engineers.Count == 0)
 {
-  <h3>No engineers have been added to this machine yet!</h3>
-} 
+  <p>This machine does not contain any engineers</p>
+}
 else
 {
-  <h3>Engineers:</h3>
+  <h4>Engineers the machine contains:</h4>
   <ul>
-    @foreach (Engineer engineer in Model.Engineers)
+  @foreach(Engineer engineer in Model.Engineers)
+  {
+    string tags = "";
+    @if(engineer.JoinEntities.Count == 0)
     {
-      <li>@Html.ActionLink($"{engineer.Name}", "Details", "Engineers", new { id = engineer.EngineerId })</li>
+      tags = "This engineer does not have any tags.";
     }
+    else
+    {
+      List<string> tagList = new List<string>();
+      @foreach(EngineerTag join in engineer.JoinEntities)
+      {
+        tagList.Add(join.Tag.Title);
+      }
+      tags = String.Join(", ", tagList);
+    }
+    <li>@engineer.Name | Tags: @tags</li>
+  }
   </ul>
 }
 
+<p>@Html.ActionLink("Back to categories", "Index")</p>
 <p>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</p>
 <p>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add new Engineer", "Create", "Engineers")</p>

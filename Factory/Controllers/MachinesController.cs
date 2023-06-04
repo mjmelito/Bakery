@@ -37,8 +37,10 @@ namespace Factory.Controllers
     public ActionResult Details(int id)
     {
       Machine thisMachine = _db.Machines
-                                  .Include(machine => machine.Engineers)
-                                  .FirstOrDefault(machine => machine.MachineId == id);
+                                .Include(cat => cat.Engineers)
+                                .ThenInclude(engineer => engineer.JoinEntities)
+                                .ThenInclude(join => join.Tag)
+                                .FirstOrDefault(machine => machine.MachineId == id);
       return View(thisMachine);
     }
 
