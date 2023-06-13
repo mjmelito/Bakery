@@ -13,11 +13,20 @@
 else
 {
   <ul>
-    @foreach (Engineer engineer in Model)
-    {
-      <li>@Html.ActionLink($"{engineer.Name}", "Details", new { id = engineer.EngineerId }) | @engineer.Machine.Name</li>
-    }
-  </ul>
+  @foreach (Engineer engineer in Model)
+  {
+    <li>@Html.ActionLink($"{engineer.Name}", "Details", new { id = engineer.EngineerId }) |
+      @if (engineer.Machine != null)
+      {
+        @engineer.Machine.Name
+      }
+      else
+      {
+        <p>Machine not assigned</p>
+      }
+    </li>
+  }
+</ul>
 }
 
 <p>@Html.ActionLink("Add new Engineer", "Create")</p>

@@ -26,7 +26,7 @@ namespace Factory.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+      // ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
       return View();
     }
 
@@ -35,7 +35,7 @@ namespace Factory.Controllers
     {
       if (engineer.MachineId == 0)
       {
-        return RedirectToAction("Create");
+        engineer.MachineId = 0;
       }
       _db.Engineers.Add(engineer);
       _db.SaveChanges();
