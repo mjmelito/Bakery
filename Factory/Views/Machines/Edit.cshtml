@@ -12,8 +12,13 @@
   @Html.HiddenFor(model => model.MachineId)
 
   @Html.LabelFor(model => model.MachineName)
-  @Html.EditorFor(model => model.MachineName)
-
+  <br>
+  @Html.TextBoxFor(model => model.MachineName)
+  <br><br>
+  @Html.LabelFor(model => model.MachineDescription)
+  <br>
+  @Html.TextAreaFor(model => model.MachineDescription)
+  
   <input type="submit" value="Save" />
 }
 <p>@Html.ActionLink("Back to list", "Index")</p>

@@ -13,8 +13,13 @@
   @Html.HiddenFor(model => model.EngineerId)
 
   @Html.LabelFor(model => model.EngineerName)
-  @Html.EditorFor(model => model.EngineerName)
-
+  <br>
+  @Html.TextBoxFor(model => model.EngineerName)
+  <br><br>
+  @Html.LabelFor(model => model.EngineerDetails)
+  <br>
+  @Html.TextAreaFor(model => model.EngineerDetails)
+  
   <input type="submit" value="Save" />
 }
 

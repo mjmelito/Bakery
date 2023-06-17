@@ -44,6 +44,7 @@ namespace Factory.Controllers
       return View(thisMachine);
     }
 
+
     public ActionResult AddEngineer(int id)
     {
       Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
@@ -93,5 +94,15 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+     [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      EngineerMachine joinSelection = _db.JoinEntities.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.JoinEntities.Remove(joinSelection);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }
