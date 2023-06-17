@@ -22,6 +22,11 @@ namespace Bakery
                         )
                       );
 
+      builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ToDoListContext>()
+                .AddDefaultTokenProviders();
+
+
       WebApplication app = builder.Build();
 
       app.UseDeveloperExceptionPage();
