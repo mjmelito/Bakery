@@ -7,8 +7,14 @@
 <h4>Add a new machine</h4>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
+ @Html.LabelFor(model => model.MachineName)
+  <br>
+  @Html.TextBoxFor(model => model.MachineName)
+  <br><br>
+  @Html.LabelFor(model => model.MachineDescription)
+  <br>
+  @Html.TextAreaFor(model => model.MachineDescription)
+
   <input type="submit" value="Add new machine" />
 }
 <p>@Html.ActionLink("Show all machines", "Index")</p>

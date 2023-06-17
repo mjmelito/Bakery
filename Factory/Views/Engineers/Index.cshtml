@@ -15,18 +15,9 @@ else
   <ul>
   @foreach (Engineer engineer in Model)
   {
-    <li>@Html.ActionLink($"{engineer.Name}", "Details", new { id = engineer.EngineerId }) |
-      @if (engineer.Machine != null)
-      {
-        @engineer.Machine.Name
-      }
-      else
-      {
-        <p>Machine not assigned</p>
-      }
-    </li>
+    <li>@Html.ActionLink($"{engineer.EngineerName}", "Details", new { id = engineer.EngineerId })</li>
   }
-</ul>
+  </ul>
 }
 
 <p>@Html.ActionLink("Add new Engineer", "Create")</p>

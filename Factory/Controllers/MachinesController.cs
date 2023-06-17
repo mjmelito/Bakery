@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
@@ -37,12 +38,32 @@ namespace Factory.Controllers
     public ActionResult Details(int id)
     {
       Machine thisMachine = _db.Machines
-                                .Include(cat => cat.Engineers)
-                                .ThenInclude(engineer => engineer.JoinEntities)
-                                .ThenInclude(join => join.Tag)
-                                .FirstOrDefault(machine => machine.MachineId == id);
+                              .Include(machine => machine.JoinEntities)
+                              .ThenInclude(machine => machine.Engineer)
+                              .FirstOrDefault(machine => machine.MachineId == id);
       return View(thisMachine);
     }
+
+    public ActionResult AddEngineer(int id)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "EngineerName");
+      return View(thisMachine);
+    }
+
+    [HttpPost]
+    public ActionResult AddEngineer(Machine machine, int EngineerId)
+    {
+      #nullable enable
+      EngineerMachine? joinEntity = _db.JoinEntities.FirstOrDefault(join => (join.EngineerId == EngineerId && join.MachineId == machine.MachineId));
+      #nullable disable
+      if (joinEntity == null && EngineerId != 0)
+      {
+        _db.JoinEntities.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = machine.MachineId });
+    }  
 
     public ActionResult Edit(int id)
     {
