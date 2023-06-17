@@ -1,6 +1,6 @@
-# Dr. Sillystringz's Factory Manager
+# Dr. Sillystringz's Bakery Manager
 
-#### A simple C# program built for Dr. Sillystringz's to manage their engineering team and machine inventory.
+#### A simple C# program built for Dr. Sillystringz's to manage their treating team and flavor inventory.
 
 #### By Matthew Melito
 
@@ -17,7 +17,7 @@
 
 ## Description
 
-This C# application was designed and built to help factory managers keep track of their machines and manage the engineering staff that is responsible for maintaining them.
+This C# application was designed and built to help factory managers keep track of their flavors and manage the treating staff that is responsible for maintaining them.
 
 
 ## Setup/Installation Requirements
@@ -30,10 +30,10 @@ This C# application was designed and built to help factory managers keep track o
 
 #### Cloning and Initial Setup
 
-5. Clone project repository from https://github.com/mjmelito/Factory
-6. Navigate to the project's root directory, Factory
+5. Clone project repository from https://github.com/mjmelito/Bakery
+6. Navigate to the project's root directory, Bakery
 7. Install the MySglConnector Package with the following terminal command: dotnet add package MYSqlConnector -v 2.2.0. Then enter 'dotnet restore'.
-8. Within the Factory directory, add a file named 'appsettings.json and add the following code to the file:
+8. Within the Bakery directory, add a file named 'appsettings.json and add the following code to the file:
 
 {
     "ConnectionStrings": {
@@ -43,7 +43,7 @@ This C# application was designed and built to help factory managers keep track o
 9. Be sure to add obj, bin, and appsettings.json to your .gitignore file and commit the file to GitHub to protect your Username and Password.
 
 #### Add Migrations, Create Database, and Run Application
-10. Navigate to the 'Factory' directory
+10. Navigate to the 'Bakery' directory
 11. Run the command "dotnet build"
 12. Run the command "dotnet tool install --global dotnet-ef --version 6.0.0"
 13. Run the command "dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0"

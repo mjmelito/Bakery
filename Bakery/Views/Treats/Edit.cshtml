@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Bakery.Models.Treat
+
+<h2>Edit</h2>
+
+<h4>Edit this treat: @Html.DisplayFor(model => model.TreatName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+
+  @Html.LabelFor(model => model.TreatName)
+  <br>
+  @Html.TextBoxFor(model => model.TreatName)
+  <br><br>
+  @Html.LabelFor(model => model.TreatDetails)
+  <br>
+  @Html.TextAreaFor(model => model.TreatDetails)
+  
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
