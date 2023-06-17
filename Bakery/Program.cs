@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Bakery.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bakery
 {
