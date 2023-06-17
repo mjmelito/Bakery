@@ -74,12 +74,14 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
     public ActionResult AddMachine(int id)
     {
       Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
       ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
       return View(thisEngineer);
     }
+
 
     [HttpPost]
     public ActionResult AddMachine(Engineer engineer, int MachineId)

@@ -7,11 +7,13 @@
 ## Technologies Used
 
 * C#
-* .NET
+* .NET6
 * MySQL
+* Asp.NetCore
 * Entity Framework Core
 * HTML
 * CSS
+* Linq
 
 ## Description
 
@@ -40,16 +42,15 @@ This C# application was designed and built to help factory managers keep track o
 }
 9. Be sure to add obj, bin, and appsettings.json to your .gitignore file and commit the file to GitHub to protect your Username and Password.
 
-#### Importing the Database 
-10. Open MySQL Workbench and locate the Navigator pane (on the left-hand side of the program window.)
-11. Select "Data Import/Restore".
-12. Select "Import from Self Contained File". Navigate to the top directory of the project. ("Factory").
-13. Within "Factory", select the file named Factory.sql.
-14. Under "Default Schema to be Imported To", click the "New..." button, enter the name of the database (Factory.sql), and click "OK".
-15. Select to the "Start Import" button.
+#### Add Migrations, Create Database, and Run Application
+10. Navigate to the 'Factory' directory
+11. Run the command "dotnet build"
+12. Run the command "dotnet tool install --global dotnet-ef --version 6.0.0"
+13. Run the command "dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0"
+14. Run the command "dotnet ef migrations add Initial"
+15. Run "dotnet ef database update" in your command line.
+16. Then run the command "dotnet watch run"
 
-#### Running the Program
-16.  STILL NEED TO ADD THIS SECTION
 
 ## Known Bugs
 
