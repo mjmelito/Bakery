@@ -1,12 +1,45 @@
+@using Bakery.ViewModels;
+@model TreatFlavorViewModel;
+
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 
 <h1>Welcome to the Bakery Manager!</h1>
-<p>@Html.ActionLink("Manage Treats", "Index", "Treats")</p>
-<p>@Html.ActionLink("Manage Flavors", "Index", "Flavors")</p>
 <p>@Html.ActionLink("Create an account", "Register", "Account")</p>
-<p>@Html.ActionLink("Manage your account", "Index", "Account")</p>
+<p>@Html.ActionLink("Log In", "Login", "Account")</p>
+
+<h1>Flavors</h1>
+
+@if (Model.Flavors == null || Model.Flavors.Count == 0)
+{
+    <h3>No flavors have been added yet!</h3>
+}
+else
+{
+    <ul>
+        @foreach (var flavor in Model.Flavors)
+        {
+            <li>@Html.ActionLink(flavor.FlavorName, "Details", "Flavors", new { id = flavor.FlavorId })</li>
+        }
+    </ul>
+}
+
+<h1>Treats</h1>
+
+@if (Model.Treats == null || Model.Treats.Count == 0)
+{
+    <h3>No treats have been added yet!</h3>
+}
+else
+{
+    <ul>
+        @foreach (var treat in Model.Treats)
+        {
+            <li>@Html.ActionLink(treat.TreatName, "Details", "Treats", new { id = treat.TreatId })</li>
+        }
+    </ul>
+}
 
 
 

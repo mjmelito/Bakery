@@ -11,10 +11,14 @@
   {
     <input type="submit" class="btn btn-default" value="Log out" />
   }
+  <p>@Html.ActionLink("Manage Treats", "Index", "Treats")</p>
+  <p>@Html.ActionLink("Manage Flavors", "Index", "Flavors")</p>
+  <p>@Html.ActionLink("See Full List", "Index", "Home")</p>
+
 }
 else
 {
   <p>@Html.ActionLink("Register", "Register")</p>
   <p>@Html.ActionLink("Log in", "Login")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
 }
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
