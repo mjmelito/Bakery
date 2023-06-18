@@ -1,6 +1,6 @@
-# Dr. Sillystringz's Bakery Manager
+# Pierre's Bakery Marketing Platform
 
-#### A simple C# program built for Dr. Sillystringz's to manage their treating team and flavor inventory.
+#### A simple C# program built for Pierre's Bakery to manage their treat and flavor inventory, and to allow customers to view their current inventory.
 
 #### By Matthew Melito
 
@@ -11,13 +11,14 @@
 * MySQL
 * Asp.NetCore
 * Entity Framework Core
+* Asp.NetCore.Identity
 * HTML
 * CSS
 * Linq
 
 ## Description
 
-This C# application was designed and built to help factory managers keep track of their flavors and manage the treating staff that is responsible for maintaining them.
+This C# application was designed and built to allow customers to view bakery treats and flavors, and to allow users with authorized accounts to create, edit, and delete flavors, treats, and their associations with one another.
 
 
 ## Setup/Installation Requirements
@@ -57,5 +58,7 @@ This C# application was designed and built to help factory managers keep track o
 * No known bugs or issues.
 
 ## This project uses the following license: MIT
+
+Please feel free to reach out and report problems or bugs: matt_melito@outlook.com
 
 Copyright (c) 2023 Matthew Melito
